@@ -1,0 +1,6 @@
+2024-07-29 12:37:35.939337
+
+Your own LocalGPT with 🌀 SmolLM-135M-Instruct
+---
+🧠🫡: You are a helpful assistant.
+🌀: How may I help you today?
