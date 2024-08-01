@@ -12,7 +12,7 @@ import tiktoken
 encoding = tiktoken.get_encoding("r50k_base") #context_count = len(encoding.encode(yourtext))
 
 modelname = 'Lite-Mistral-150M-v2-Instruct'
-modelfile = 'models\Lite-Mistral-150M-v2-Instruct-Q8_0.gguf'
+modelfile = 'models/Lite-Mistral-150M-v2-Instruct-Q8_0.gguf'
 
 
 def writehistory(filename,text):
@@ -23,18 +23,19 @@ def writehistory(filename,text):
 
 #AVATARS  👷🐦  🥶🌀
 av_us = 'user.png'  #"🦖"  #A single emoji, e.g. "🧑‍💻", "🤖", "🦖". Shortcodes are not supported.
-av_ass = 'assistant65.png'
+av_ass = 'assistant3002.png'
 
 # Set the webpage title
 st.set_page_config(
-    page_title=f"Your LocalGPT with 🔲 {modelname}",
-    page_icon="🔲",
+    page_title=f"Your LocalGPT with 🌟 {modelname}",
+    page_icon="🌟",
     layout="wide")
 
 # Create a header element
-mytitle = '# LocalGPT with 🔲 Lite-Oute-1-65M-Instruct'
+mytitle = '# LocalGPT with 🌟 Lite-Mistral-150M-v2-Instruct'
 st.markdown(mytitle, unsafe_allow_html=True)
-st.markdown('### Context windown: 2048 tokens', unsafe_allow_html=True)
+st.markdown('### Context window 2048 tokens🔳')
+
 def genRANstring(n):
     """
     n = int number of char to randomize
@@ -149,14 +150,14 @@ if user_prompt := st.chat_input("Your message here. Shift+Enter to add a new lin
                 messages=conv_messages,
                 temperature=st.session_state.temperature,
                 frequency_penalty  = st.session_state.repeat,
-                stop=['</s>'],
+                stop=['<|im_end|>'],
                 max_tokens=st.session_state.maxlength,
                 stream=True,
             )
             for chunk in completion:
                 if chunk.choices[0].delta.content:
                     full_response += chunk.choices[0].delta.content
-                    message_placeholder.markdown(full_response + "🔲")
+                    message_placeholder.markdown(full_response + "🔳")
             toregister = full_response + f"""
 ```
 
